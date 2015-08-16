@@ -61,6 +61,21 @@ var sourceManager = {
       }
     }
     return null;
+  },
+  getText: function(id, type){
+
+  },
+  getMediaUri: function (id, action, secondsSinceExplicit){
+
+  },
+  getItemRelatedBrowse: function(id){
+
+  },
+  getItemRelatedText: function(id){
+
+  },
+  getItemRelatedPlay: function(id) {
+
   }
 };
 
