@@ -1,0 +1,13 @@
+{
+  "browser": false,
+  "esnext": true,
+  "globals": {
+
+  },
+  "globalstrict": true,
+  "undef": true,
+  "unused": false,
+  "node" : true,
+  "es5" : true,
+  "curly": true
+}
