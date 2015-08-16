@@ -1,2 +1,3 @@
-#!/usr/bin/env node
-require(__dirname + '/lib/sonos/sonos-service');
+"use strict";
+
+module.exports = require('./lib/sonos/sonos-service');
