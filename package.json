@@ -1,16 +1,21 @@
 {
   "name": "Sonos-Node-API",
   "version": "0.0.1",
-  "author": "Till Klocke",
+  "author": {
+    "name": "Till Klocke",
+    "email": "till.klocke@gmail.com"
+  },
   "description": "SMAPI implementation for node",
-  "contributors": [
-   {
-      "name": "Till Klocke"
-    }
-  ],
+  "engines": {
+    "node": ">=0.10.26"
+  },
   "scripts": {
     "start": "node ./test.js"
   },
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./index.js",
   "bin": "./test.js",
   "global": "false",
   "repository": {
@@ -24,5 +29,10 @@
     "querystring": "0.2.0",
     "sonos": "0.8.0"
   },
-  "license": "MIT"
+  "licenses": [
+    {
+      "type": "MIT License",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    }
+  ],
 }
