@@ -122,4 +122,28 @@ suite("Soap service object methods", function(){
     assert.equal(1, rootLevelItems.getMetadataResult.count);
     assert.equal(rootLevelItems.getMetadataResult.count, (rootLevelItems.getMetadataResult.mediaMetadata.length + rootLevelItems.getMetadataResult.mediaCollection.length));
   });
+
+  test("Get single media item", function() {
+    var args = {
+      id: "1"
+    };
+    var firstStreamItem = soapService.Sonos.SonosSoap.getMediaMetadata(args);
+    assert.notEqual(undefined,firstStreamItem);
+  });
+
+  test("Root can't be queried via getMediaMetadata", function(){
+    var args = {
+      id: "root"
+    };
+    var item = soapService.Sonos.SonosSoap.getMediaMetadata(args);
+    assert.equal(null, item);
+  });
+
+  test("Collections can't be queried via getMediaMetadata", function(){
+    var args = {
+      id: "streams"
+    };
+    var item = soapService.Sonos.SonosSoap.getMediaMetadata(args);
+    assert.equal(null, item);
+  });
 });
