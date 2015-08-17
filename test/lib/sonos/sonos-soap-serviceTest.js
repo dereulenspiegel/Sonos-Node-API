@@ -51,6 +51,33 @@ var streamChilds = [
 }
 ];
 
+var streamingRelatedBrowse = [
+  {
+    parentId: "2",
+    item: {
+      id:"2related",
+      type: "RELATED_ARTISTS"
+    }
+  },
+  {
+    parentId: "1",
+    item: {
+      id: "1related",
+      type: "RELATED_SHOW"
+    }
+  }
+];
+
+var streamingRelatedText = [
+  {
+    parentId: "1",
+    item: {
+      id: "1text",
+      type: "ARTIST_BIO"
+    }
+  }
+];
+
 var lastUpdate = 0;
 
 var inMemoryStor = {
@@ -97,13 +124,32 @@ var inMemoryStor = {
 
   },
   getItemRelatedBrowse: function(id){
+    for(var x in streamingRelatedBrowse){
+      if(id === streamingRelatedBrowse[x].parentId){
+        return [ streamingRelatedBrowse[x].item ];
+      }
+    }
 
   },
   getItemRelatedText: function(id){
-
+    for(var x in streamingRelatedText){
+      if(id === streamingRelatedText[x].parentId){
+        return [ streamingRelatedText[x].item ];
+      }
+    }
   },
   getItemRelatedPlay: function(id) {
-
+    if(id === "1"){
+      return [
+      {
+        id: "play1",
+        type: "stream",
+        title:"DBB Radio",
+        canPlay: true
+      }
+      ];
+    }
+    return null;
   }
 };
 
@@ -145,5 +191,16 @@ suite("Soap service object methods", function(){
     };
     var item = soapService.Sonos.SonosSoap.getMediaMetadata(args);
     assert.equal(null, item);
+  });
+
+  test("getExtendedMetadat", function(){
+    var args = {
+      id: "1"
+    };
+    var item = soapService.Sonos.SonosSoap.getExtendedMetadata(args);
+    console.log("Item %j", item);
+    assert.equal(1,item.getExtendedMetadataResult.relatedBrowse.length);
+    assert.equal(1,item.getExtendedMetadataResult.relatedText.length);
+    assert.equal(1,item.getExtendedMetadataResult.relatedPlay.length);
   });
 });
