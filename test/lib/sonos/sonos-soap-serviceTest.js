@@ -110,14 +110,16 @@ var inMemoryStor = {
 require("../../../lib/sonos/sonos-soap-service.js").setSourceManager(inMemoryStor);
 
 
-test('Metadata is returned correctly for root', function () {
-  var args = {
-    id: "root",
-    index: 0,
-    count: 0,
-    recursive: false
-  };
-  var rootLevelItems = soapService.Sonos.SonosSoap.getMetadata(args);
-  assert.equal(1, rootLevelItems.getMetadataResult.count);
-  assert.equal(rootLevelItems.getMetadataResult.count, (rootLevelItems.getMetadataResult.mediaMetadata.length + rootLevelItems.getMetadataResult.mediaCollection.length));
+suite("Soap service object methods", function(){
+  test("Metadata is returned correctly for root", function () {
+    var args = {
+      id: "root",
+      index: 0,
+      count: 0,
+      recursive: false
+    };
+    var rootLevelItems = soapService.Sonos.SonosSoap.getMetadata(args);
+    assert.equal(1, rootLevelItems.getMetadataResult.count);
+    assert.equal(rootLevelItems.getMetadataResult.count, (rootLevelItems.getMetadataResult.mediaMetadata.length + rootLevelItems.getMetadataResult.mediaCollection.length));
+  });
 });
