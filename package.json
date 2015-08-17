@@ -8,7 +8,8 @@
   },
   "scripts": {
     "start": "node ./test.js",
-    "test": "istanbul cover _mocha"
+    "test": "istanbul cover _mocha",
+    "coveralls": "coveralls < coverage/lcov.info"
   },
   "directories": {
     "lib": "./lib"
@@ -31,6 +32,7 @@
   "devDependencies": {
     "mocha": "^2.2.5",
     "assert": "^1.3.0",
-    "istanbul": "^0.3.17"
+    "istanbul": "^0.3.17",
+    "coveralls": "^2.11.4"
   }
 }
