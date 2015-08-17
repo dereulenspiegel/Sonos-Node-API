@@ -118,7 +118,10 @@ var inMemoryStor = {
     return null;
   },
   getText: function(id, type){
-
+    if(id === "1text" && type === "ARTIST_BIO") {
+      return "Test text";
+    }
+    return null;
   },
   getMediaUri: function (id, action, secondsSinceExplicit){
 
@@ -202,5 +205,27 @@ suite("Soap service object methods", function(){
     assert.equal(1,item.getExtendedMetadataResult.relatedBrowse.length);
     assert.equal(1,item.getExtendedMetadataResult.relatedText.length);
     assert.equal(1,item.getExtendedMetadataResult.relatedPlay.length);
+  });
+
+  test("getLastUpdate return specific value", function(){
+    var item = soapService.Sonos.SonosSoap.getLastUpdate();
+    assert.equal(0,item.getLastUpdateResult.catalog);
+    assert.equal(0,item.getLastUpdateResult.favorites);
+
+    lastUpdate = 5;
+
+    item = soapService.Sonos.SonosSoap.getLastUpdate();
+    assert.equal(5,item.getLastUpdateResult.catalog);
+    assert.equal(5,item.getLastUpdateResult.favorites);    
+  });
+
+  test("getExtendedMetadataText", function() {
+    var args = {
+      id: "1text",
+      type: "ARTIST_BIO"
+    };
+
+    var item = soapService.Sonos.SonosSoap.getExtendedMetadataText(args);
+    assert.equal("Test text", item.getExtendedMetadataTextResult);
   });
 });
