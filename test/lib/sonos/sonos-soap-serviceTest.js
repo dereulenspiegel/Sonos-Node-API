@@ -85,6 +85,10 @@ var inMemoryStor = {
     return lastUpdate;
   },
 
+  getSessionId: function() {
+    return "static-session-id";
+  },
+
   getItemCount: function(id){
     if(id === "root"){
       return rootLevelItems.length;
@@ -227,5 +231,10 @@ suite("Soap service object methods", function(){
 
     var item = soapService.Sonos.SonosSoap.getExtendedMetadataText(args);
     assert.equal("Test text", item.getExtendedMetadataTextResult);
+  });
+
+  test("getSessionId always returns the correct structure", function(){
+    var item = soapService.Sonos.SonosSoap.getSessionId();
+    assert.equal("static-session-id", item.getSessionIdResult);
   });
 });
