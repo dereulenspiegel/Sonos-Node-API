@@ -2,3 +2,4 @@ node_modules
 coverage
 soap-ui/
 test-tool-suite/
+*.log
