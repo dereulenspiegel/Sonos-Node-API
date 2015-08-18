@@ -9,7 +9,8 @@
   "scripts": {
     "start": "node ./test.js",
     "test": "istanbul cover _mocha",
-    "coveralls": "coveralls < coverage/lcov.info"
+    "coveralls": "coveralls < coverage/lcov.info",
+    "partner-test": "cd test-tool-suite/smapi/content_workflow && python suite_selftest.py"
   },
   "directories": {
     "lib": "./lib"
